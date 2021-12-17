@@ -6,7 +6,7 @@ SELECT
  NULL AS forecast_value,
  NULL AS prediction_interval_lower_bound,
  NULL AS prediction_interval_upper_bound
-FROM  `ml-learning-202111.arima_covid19.daily_cases`
+FROM  `<YOUR_PROJECT_NAME>.<YOUR_DATASET_NAME>.<YOUR_TABLE_NAME_OF_COVID_TABLE>`
 WHERE prefecture = '全国'
 UNION ALL
 SELECT
@@ -16,11 +16,11 @@ SELECT
  prediction_interval_lower_bound,
  prediction_interval_upper_bound
 FROM
- ML.FORECAST(MODEL `ml-learning-202111.arima_covid19.arima_covid19_japan`,
+ ML.FORECAST(MODEL `<YOUR_PROJECT_NAME>.<YOUR_DATASET_NAME>.<YOUR_MODEL_NAME_OF_ARIMA>`,
   STRUCT(30 AS horizon, 0.8 AS confidence_level) -- 信頼区間80%の上限と下限
   )
 ),
-actual_value AS ( # 2021-11-01 ~ 2021-12-11 の実際の値を取得
+actual_value AS ( --  2021-11-01 ~ 2021-12-11 の実際の値を取得
 WITH
   name AS (
   SELECT
@@ -71,7 +71,7 @@ WHERE
   AND new_deceased_count IS NOT NULL
   AND prefecture = '全国'
   AND date >= '2021-11-01'
-  AND date < '2021-12-12' # 実行時点で12/12のデータが最新だったので
+  AND date < '2021-12-12' -- 実行時点で12/12のデータが最新だったので
 -- ORDER BY
 --   date DESC
 )
