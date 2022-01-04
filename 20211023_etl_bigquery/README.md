@@ -6,6 +6,7 @@ BigQueryで以下のETL処理を行い、BigQuery MLでモデル作成をしま�
 1. BigQueryへロード
 1. ML model 作成・評価・予測
 
+Todo: StepByStep へ手順画像を追記する
 # Training data
 Source (Titanic)
 https://www.kaggle.com/c/titanic/overview
