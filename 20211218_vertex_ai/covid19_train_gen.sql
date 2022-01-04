@@ -67,7 +67,7 @@ SELECT
   *
 FROM feature
 WHERE date >= '2020-04-01' -- Delete '2020-03-21' ~ '2020-03-31' for invalid value in cumulative_persons_fully_vaccinated
-   AND date < '2021-11-01'
+  AND date < '2021-11-01'
 
 -- Japan:        country_name = "Japan" AND location_key = "JP"
 -- South Korea:  country_name = "South Korea" AND location_key = "KR"
