@@ -1,5 +1,4 @@
 import os
-
 import pandas as pd
 from google.cloud import bigquery
 
@@ -40,6 +39,3 @@ def load_data(data, context):
             table.num_rows, len(table.schema), table_id
         )
     )
-
-
-# version 9 で成功
