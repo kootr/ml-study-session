@@ -1,6 +1,7 @@
 # 概要
 BigQueryでARIMAモデルを用いてCOVID-19の予測モデルを作成しました。
-
+機械学習の社会実装勉強会 第5回の発表内容です。
+https://www.slideshare.net/ssusere6d3be/bigquery-ml-arima-model
 - Result SQL: [arima_result.sql](./arima_result.sql)
 
 ![Dashboard](../images/20211127_arimamodel/prediction_result.png)

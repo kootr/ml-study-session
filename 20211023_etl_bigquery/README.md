@@ -1,5 +1,7 @@
 # 概要
 BigQueryで以下のETL処理を行い、BigQuery MLでモデル作成をしました。
+機械学習の社会実装勉強会 第4回の発表内容です。
+https://www.slideshare.net/ssusere6d3be/bigquery-ml-datapipeline
 
 1. GoogleCloudStorageへCSVファイルを(train.csv, test.csv)アップロード
 1. Cloud Functionsが前処理を実行
