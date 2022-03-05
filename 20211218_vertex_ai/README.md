@@ -1,5 +1,7 @@
 # 概要
 Vertex AIを用いて、COVID-19の予測モデルを作成しました。
+機械学習の社会実装勉強会 第6回の発表内容です。
+https://www.slideshare.net/ssusere6d3be/vertex-ai
 
 ![Dashboard](../images/20211218_vertex_ai/covid19_prediction_dashboard.png)
 [CSV for dashboad](./csv/2021-09-01_2021-11-14_actual_plus_predicted_result.csv)
