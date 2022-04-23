@@ -6,7 +6,7 @@ OPTIONS (
   -- max_parallel_trials=2
   ) AS (
 SELECT
-  Pclass, Title, isAlone, Age, Sex, Embarked, Fare, AgeClass, Survived AS label
+  Pclass, Title, isAlone, Age, Sex, Embarked, Fare, Age_Class, Survived AS label
 FROM
   `<YOUR_DATASET_NAME>.train`
 WHERE PassengerId BETWEEN 1 AND 712

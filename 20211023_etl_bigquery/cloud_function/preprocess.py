@@ -75,7 +75,7 @@ def age(df):
     df.loc[(df["Age"] > 32) & (df["Age"] <= 48), "Age"] = 2
     df.loc[(df["Age"] > 48) & (df["Age"] <= 64), "Age"] = 3
     df.loc[df["Age"] > 64, "Age"]
-    df["Age*Class"] = df.Age * df.Pclass
+    df["Age_Class"] = df.Age * df.Pclass
     return df
 
 
