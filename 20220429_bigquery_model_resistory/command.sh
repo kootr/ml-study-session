@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENDPOINT_ID="6623361288699379712"
+ENDPOINT_ID="EDIT_ID"
 PROJECT_ID="ml-session"
 INPUT_DATA_FILE="./request.json"
 
