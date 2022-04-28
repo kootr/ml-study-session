@@ -1,12 +1,11 @@
-CREATE OR REPLACE MODEL session10.taxi_tip_classification_model
+CREATE OR REPLACE MODEL session10.taxi_tip_classification_model_demo
 OPTIONS
  (model_type='logistic_reg',
   input_label_cols=['tip_bucket'],
   -- enable_global_explain=true
   model_registry='vertex_ai',
   vertex_ai_model_id='taxi_tip_classification_model',
-  -- vertex_ai_model_version_aliases=['linear_reg', 'experimental']
-  vertex_ai_model_version_aliases=['linear_reg', 'ready_to_staging']
+  vertex_ai_model_version_aliases=['logistic_reg', 'experimental']
 ) AS
 SELECT
   vendor_id,
@@ -26,3 +25,4 @@ FROM
 WHERE tip_amount >= 0
   -- AND pickup_datetime >= '2018-10-01' AND dropoff_datetime < '2018-10-02'
   AND pickup_datetime >= '2018-11-02' AND dropoff_datetime < '2018-11-03'
+  

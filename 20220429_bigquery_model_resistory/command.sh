@@ -1,6 +1,9 @@
-ENDPOINT_ID="5415270688657244160"
+#!/bin/bash
+
+ENDPOINT_ID="6623361288699379712"
 PROJECT_ID="ml-session"
 INPUT_DATA_FILE="./request.json"
+
 curl \
 -X POST \
 -H "Authorization: Bearer $(gcloud auth print-access-token)" \
