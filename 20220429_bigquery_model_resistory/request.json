@@ -1,0 +1,10 @@
+{
+  "instances": [{
+  "vendor_id": "0", 
+  "passenger_count": 1, 
+  "trip_distance": 5.85, 
+  "rate_code": "0", 
+  "payment_type": "0",
+  "total_amount": 55.56
+  }]
+}
