@@ -9,13 +9,13 @@ import numpy as np
 
 """
 @INPUT:
-    R     : a matrix to be factorized, dimension N x M
-    U     : an initial matrix of dimension N x K (latent user)
-    V     : an initial matrix of dimension M x K (latent item)
-    K     : the number of latent features
-    steps : the maximum number of steps to perform the optimisation
-    alpha : the learning rate
-    beta  : the regularization parameter
+    R           : a matrix to be factorized, dimension N x M
+    U           : an initial matrix of dimension N x K (latent user)
+    V           : an initial matrix of dimension M x K (latent item)
+    K           : the number of latent features
+    steps       : the maximum number of steps to perform the optimisation
+    alpha       : the learning rate
+    lambda1,2   : the regularization parameter
 @OUTPUT:
     the final matrices U and V
 """
@@ -53,7 +53,6 @@ def matrix_factorization(R, U, V, K, steps=5000, alpha=0.0002, lambda1=0.02, lam
                     for q in range(K):
                         U[i][q] = U[i][q] + alpha * (eij * V[q][j] - lambda1 * U[i][q])
                         V[q][j] = V[q][j] + alpha * (eij * U[i][q] - lambda2 * V[q][j])
-        # eR = np.dot(U,V)
         e = 0
         for i in range(len(R)):
             for j in range(len(R[i])):
