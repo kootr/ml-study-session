@@ -9,13 +9,13 @@ import numpy as np
 
 """
 @INPUT:
-    R     : a matrix to be factorized, dimension N x M
-    U     : an initial matrix of dimension N x K (latent user)
-    V     : an initial matrix of dimension M x K (latent item)
-    K     : the number of latent features
-    steps : the maximum number of steps to perform the optimisation
-    alpha : the learning rate
-    beta  : the regularization parameter
+    R           : a matrix to be factorized, dimension N x M
+    U           : an initial matrix of dimension N x K (latent user)
+    V           : an initial matrix of dimension M x K (latent item)
+    K           : the number of latent features
+    steps       : the maximum number of steps to perform the optimisation
+    alpha       : the learning rate
+    lambda1,2   : the regularization parameter
 @OUTPUT:
     the final matrices U and V
 """
@@ -43,24 +43,23 @@ def main():
     print(nR)
     return
 
-def matrix_factorization(R, U, V, K, steps=5000, alpha=0.0002, beta=0.02):
+def matrix_factorization(R, U, V, K, steps=5000, alpha=0.0002, lambda1=0.02, lambda2=0.02):
     V = V.T
     for step in range(steps):
         for i in range(len(R)):
             for j in range(len(R[i])):
                 if R[i][j] > 0:
                     eij = R[i][j] - np.dot(U[i,:],V[:,j])
-                    for k in range(K):
-                        U[i][k] = U[i][k] + alpha * (2 * eij * V[k][j] - beta * U[i][k])
-                        V[k][j] = V[k][j] + alpha * (2 * eij * U[i][k] - beta * V[k][j])
-        eR = np.dot(U,V)
+                    for q in range(K):
+                        U[i][q] = U[i][q] + alpha * (eij * V[q][j] - lambda1 * U[i][q])
+                        V[q][j] = V[q][j] + alpha * (eij * U[i][q] - lambda2 * V[q][j])
         e = 0
         for i in range(len(R)):
             for j in range(len(R[i])):
                 if R[i][j] > 0:
                     e = e + pow(R[i][j] - np.dot(U[i,:],V[:,j]), 2)
                     for k in range(K):
-                        e = e + (beta/2) * ( pow(U[i][k],2) + pow(V[k][j],2) )
+                        e = e + ((lambda1/2) * pow(U[i][k],2)) + ((lambda2/2) * pow(V[k][j],2))
         if e < 0.001:
             break
     return U, V.T
