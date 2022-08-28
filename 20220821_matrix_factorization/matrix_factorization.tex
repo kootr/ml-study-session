@@ -26,7 +26,7 @@
 \[
  \hat{r}_{ij} =  \sum_{s=1}^{k} u_{is} v_{sj} 
 \]
-である。ここで、
+である、ここで
 
 \[
   U = [u_{is}]_{m \times k}
@@ -39,19 +39,23 @@
 \]
 である。
 
+\newpage
 
-以下の目的関数を最小化させる。（単純な２乗誤差）
+以下の目的関数を最小化させる.（単純な２乗誤差）
 \[
   J = \frac{1}{2} \sum_{(i,j) \in S} (r_{ij} - \sum_{s=1}^{k} u_{is} v_{sj} )^2
 \]
 
-勾配降下法を用いて、
+勾配降下法を用いて,
 \[
 \frac{\partial J}{\partial u_{iq}} = \sum_{j:(i,j) \in S} (r_{ij} - \sum_{s=1}^{k} u_{is} v_{sj} )(-v_{qj}) 
 \]
+
 \[
 \frac{\partial J}{\partial v_{qj}} = \sum_{i:(i,j) \in S} (r_{ij} - \sum_{s=1}^{k} u_{is} v_{sj} )(-u_{iq}) 
 \]
+
+ここで、q = ({1,...,k}) である
 
 \[
   u_{iq} \longleftarrow u_{iq} - \alpha\left[\frac{\partial J}{\partial u_{iq}}\right]
