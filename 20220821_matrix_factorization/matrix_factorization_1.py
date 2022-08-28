@@ -43,23 +43,28 @@ def main():
     print(nR)
     return
 
-def matrix_factorization(R, U, V, K, steps=5000, alpha=0.0002, lambda1=0.02, lambda2=0.02):
+def matrix_factorization(R, U, V, K, steps=10, alpha=0.0002, lambda1=0.02, lambda2=0.02):
     V = V.T
     for step in range(steps):
+        # 勾配降下法によるパラメータ更新
         for i in range(len(R)):
             for j in range(len(R[i])):
-                if R[i][j] > 0:
+                if R[i][j] > 0: # 未評価のアイテムは計算しない
                     eij = R[i][j] - np.dot(U[i,:],V[:,j])
                     for q in range(K):
                         U[i][q] = U[i][q] + alpha * (eij * V[q][j] - lambda1 * U[i][q])
                         V[q][j] = V[q][j] + alpha * (eij * U[i][q] - lambda2 * V[q][j])
+        print(f"R: {R}, U:{U} , V: {V}, K:{K}")
+        # 目的関数の計算
         e = 0
-        for i in range(len(R)):
-            for j in range(len(R[i])):
-                if R[i][j] > 0:
-                    e = e + pow(R[i][j] - np.dot(U[i,:],V[:,j]), 2)
+        for i in range(len(R)): # Number of users
+            for j in range(len(R[i])): # Number of items
+                if R[i][j] > 0: # 未評価のアイテムは計算しない
+                    eij = R[i][j] - np.dot(U[i,:],V[:,j])
+                    e = e + pow(eij, 2)
                     for k in range(K):
                         e = e + ((lambda1/2) * pow(U[i][k],2)) + ((lambda2/2) * pow(V[k][j],2))
+
         if e < 0.001:
             break
     return U, V.T
