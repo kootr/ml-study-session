@@ -4,7 +4,7 @@
 \begin{document}
 
 
-ユーザーを行、アイテムを列として、ユーザがアイテムに下した評価スコアを表す評価値行列 $R$ :$m$ $\times$ $n$（ユーザ数×アイテム数） があるとする。$R$は一般的に、巨大かつ疎な行列であるため、 $R$ を $U$ :$m$ $\times$ $k$と$V$ :$n$ $\times$ $k$の行列の積で近似することを考える。
+ユーザがアイテムに下した評価スコアを表す評価値行列 $R$ :$m$ $\times$ $n$（ユーザ数×アイテム数。$R$は一般的に、巨大かつ疎な行列である。 $R$ を $U$ :$m$ $\times$ $k$と$V$ :$n$ $\times$ $k$の行列の積で近似することを考える。
 （kは潜在因子で人間に理解できる保証はない。）
 
 
@@ -13,6 +13,7 @@
 \[
  R \fallingdotseq U V^T (= \hat{R})
 \]
+と書くことを考える。
 
 \begin{figure}[htbp]
   \begin{center}
@@ -55,7 +56,8 @@
 \frac{\partial J}{\partial v_{qj}} = \sum_{i:(i,j) \in S} (r_{ij} - \sum_{s=1}^{k} u_{is} v_{sj} )(-u_{iq}) 
 \]
 
-ここで、q = ({1,...,k}) である
+ここで、q = ({1,...,k}) である。
+更新式は、
 
 \[
   u_{iq} \longleftarrow u_{iq} - \alpha\left[\frac{\partial J}{\partial u_{iq}}\right]
@@ -67,7 +69,7 @@
 \[
   \frac{\lambda_1}{2}\|U\|^2_F + \frac{\lambda_2}{2}\|V\|^2_F
 \]
-を加えると、
+を加えると、目的関数は、
 \[
   J = \frac{1}{2} \sum_{(i,j) \in S} (r_{ij} - \sum_{s=1}^{k} u_{is} v_{sj} )^2 + \frac{\lambda_1}{2}\sum_{i=1}^{m}\sum_{s=1}^{k}u_{is}^2 + \frac{\lambda_2}{2}\sum_{s=1}^{k}\sum_{j=1}^{n}v_{sj}^2
 \]
