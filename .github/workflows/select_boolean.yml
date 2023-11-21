@@ -1,4 +1,4 @@
-name: Deploy to staging
+name: Echo options
 
 on:
   workflow_dispatch:
