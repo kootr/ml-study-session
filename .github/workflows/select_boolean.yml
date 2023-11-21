@@ -36,5 +36,5 @@ jobs:
         run: |
           for option in ${OPTIONS[@]}
           do
-            echo $option
+            echo "$option"
           done
