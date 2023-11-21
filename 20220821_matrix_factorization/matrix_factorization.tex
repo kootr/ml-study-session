@@ -3,7 +3,6 @@
 \usepackage[dvipdfmx]{graphicx}
 \begin{document}
 
-
 ユーザがアイテムに下した評価スコアを表す評価値行列 $R$ :$m$ $\times$ $n$（ユーザ数×アイテム数。$R$は一般的に、巨大かつ疎な行列である。 $R$ を $U$ :$m$ $\times$ $k$と$V$ :$n$ $\times$ $k$の行列の積で近似することを考える。
 （kは潜在因子で人間に理解できる保証はない。）
 
@@ -65,7 +64,7 @@
 \[
   v_{qi} \longleftarrow v_{qi} - \alpha\left[\frac{\partial J}{\partial v_{qi}}\right]
 \]
-ここで、目的関数に正則化項 
+ここで、目的関数に正則化項 が
 \[
   \frac{\lambda_1}{2}\|U\|^2_F + \frac{\lambda_2}{2}\|V\|^2_F
 \]
