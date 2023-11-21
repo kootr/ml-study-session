@@ -1,0 +1,40 @@
+name: Echo options
+
+on:
+  workflow_dispatch:
+    inputs:
+      option1:
+        description: "Echo option1"
+        required: false
+        type: boolean
+      option2:
+        description: "Echo option2"
+        required: false
+        type: boolean
+      option3:
+        description: "Echo option3"
+        required: false
+        type: boolean
+
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup APPS_TO_DEPLOY
+        run: |
+          OPTIONS=()
+          if [[ ${{ github.event.inputs.option1 }} == 'true' ]]; then OPTIONS+=('option1'); fi
+          if [[ ${{ github.event.inputs.option2  }} == 'true' ]]; then OPTIONS+=('option2'); fi
+          if [[ ${{ github.event.inputs.option3 }} == 'true' ]]; then OPTIONS+=('option3'); fi
+          echo "OPTIONS=(${OPTIONS[@]})" >> $GITHUB_ENV
+
+
+      - name: Deploy
+        run: |
+          for option in ${OPTIONS[@]}
+          do
+            echo $option
+          done
