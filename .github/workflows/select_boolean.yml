@@ -1,5 +1,6 @@
 name: Echo options
-run-name: Echo options option1=${{ inputs.option1 }} option2=${{ inputs.option2 }}
+run-name: Echo options option1=${{ inputs.option1 }} option2=${{ inputs.option2 }} option3=${{ inputs.option3 }}
+
 
 on:
   workflow_dispatch:
@@ -32,7 +33,7 @@ jobs:
           if [[ ${{ github.event.inputs.option3 }} == 'true' ]]; then OPTIONS+=('option3'); fi
           echo "OPTIONS=$(IFS=' '; echo "${OPTIONS[@]}")" >> $GITHUB_ENV
 
-      - name: Echo 
+      - name: Echo OPTIONS
         run: |
           for option in ${OPTIONS[@]}
           do
