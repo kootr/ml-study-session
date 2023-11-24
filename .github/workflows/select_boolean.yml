@@ -45,4 +45,4 @@ jobs:
           do
             echo "$option"
           done
-          echo $OPTIONS
+          echo ${OPTIONS[@]}
