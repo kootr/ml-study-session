@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup OPTIONS
+      - name: Setup OPTIONS ${{ inputs.option1 && 'option1' || '' }} ${{ inputs.option2 && 'option2' || '' }} ${{ inputs.option3 && 'option3' || '' }}
         run: |
           OPTIONS=()
           if [[ ${{ github.event.inputs.option1 }} == 'true' ]]; then OPTIONS+=('option1'); fi
