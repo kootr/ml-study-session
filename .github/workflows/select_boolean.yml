@@ -37,7 +37,7 @@ jobs:
           if [[ ${{ github.event.inputs.option1 }} == 'true' ]]; then OPTIONS+=('option1'); fi
           if [[ ${{ github.event.inputs.option2  }} == 'true' ]]; then OPTIONS+=('option2'); fi
           if [[ ${{ github.event.inputs.option3 }} == 'true' ]]; then OPTIONS+=('option3'); fi
-          echo "OPTIONS=$(IFS=' '; echo "${OPTIONS[@]}")" >> $GITHUB_ENV
+          echo "${OPTIONS[@]}" >> $GITHUB_ENV
 
       - name: Echo OPTIONS
         run: |
