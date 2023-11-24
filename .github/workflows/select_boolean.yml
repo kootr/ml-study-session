@@ -1,5 +1,10 @@
 name: Echo options
-run-name: Echo options option1=${{ inputs.option1 }} option2=${{ inputs.option2 }} option3=${{ inputs.option3 }} option2=${{ inputs.option2 }} option2=${{ inputs.option2 }} option2=${{ inputs.option2 }} option2=${{ inputs.option2 }} option2=${{ inputs.option2 }}
+run-name: >-
+  ${{ inputs.option1 && 'option1' || '' }}
+  ${{ inputs.option2 && 'option2' || '' }}
+  ${{ inputs.option3 && 'option3' || '' }}
+
+
 
 
 on:
