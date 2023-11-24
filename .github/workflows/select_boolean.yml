@@ -1,6 +1,6 @@
 name: Echo options
 run-name: >-
-  Echo options: ${{ inputs.option1 }}
+  Echo options ${{ inputs.option1 }}:
   ${{ inputs.option1 && 'option1' || '' }}
   ${{ inputs.option2 && 'option2' || '' }}
   ${{ inputs.option3 && 'option3' || '' }}
