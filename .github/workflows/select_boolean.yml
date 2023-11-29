@@ -43,5 +43,5 @@ jobs:
 
       - name: Echo OPTIONS
         run: |
-          .github/helpers/deploy_apps.sh
+          .github/helpers/echo.sh
           echo ${{env.ENV_1}}
