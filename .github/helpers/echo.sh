@@ -3,3 +3,4 @@ for option in ${OPTIONS}
         echo "$option"
       done
       echo ${OPTIONS}
+      echo "In the shell script: ${ENV_1}"
