@@ -40,9 +40,4 @@ jobs:
           echo "${OPTIONS[@]}" >> $GITHUB_ENV
 
       - name: Echo OPTIONS
-        run: |
-          for option in ${OPTIONS[@]}
-          do
-            echo "$option"
-          done
-          echo ${OPTIONS[@]}
+        run: .github/helpers/deploy_apps.sh
