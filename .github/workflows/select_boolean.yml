@@ -24,6 +24,8 @@ on:
         required: false
         type: boolean
 
+env:
+  ENV_1: "env1"
 
 jobs:
   echo:
@@ -37,7 +39,9 @@ jobs:
           if [[ ${{ github.event.inputs.option1 }} == 'true' ]]; then OPTIONS+=('option1'); fi
           if [[ ${{ github.event.inputs.option2  }} == 'true' ]]; then OPTIONS+=('option2'); fi
           if [[ ${{ github.event.inputs.option3 }} == 'true' ]]; then OPTIONS+=('option3'); fi
-          echo "${OPTIONS[@]}" >> $GITHUB_ENV
+          echo "OPTIONS=$(IFS=' '; echo "${OPTIONS[@]}")" >> $GITHUB_ENV
 
       - name: Echo OPTIONS
-        run: .github/helpers/deploy_apps.sh
+        run: |
+          .github/helpers/deploy_apps.sh
+          echo ${{env.ENV_1}}
